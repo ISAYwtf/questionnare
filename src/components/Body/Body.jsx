@@ -1,9 +1,10 @@
 import React from "react"
 import styles from "./Body.module.css"
+import Start from "../Start";
 
 const Body = () =>
     <main className={styles.body}>
-        <div>body</div>
+        <Start />
     </main>
 
 export default Body

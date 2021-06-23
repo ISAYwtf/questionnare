@@ -1,0 +1,68 @@
+
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+    cursor: pointer;
+}
+
+.titleBase {
+    color: black;
+    font-size: 1.5rem;
+    margin-right: 30px;
+    font-weight: 700;
+}
+
+.titleProcess {
+    font-size: 1rem;
+}
+
+.btnSvg {
+    display: block;
+    height: 28px;
+}
+
+.btnArrow {
+    height: 25px;
+    width: 100px;
+    object-fit: cover;
+    object-position: right;
+
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-direction: alternate;
+}
+
+.btnReturn {
+    transition: transform 1s;
+}
+
+.button button:hover .btnArrow {
+    animation-name: arrow-move;
+}
+
+.button button:hover .btnReturn {
+    transform: rotate(-360deg);
+}
+
+@keyframes arrow-move {
+    from {
+        width: 100px;
+        margin-right: 0;
+        filter: none;
+    }
+
+    to {
+        width: 80px;
+        margin-right: 20px;
+        filter: grayscale(100%);
+    }
+}

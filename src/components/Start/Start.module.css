@@ -1,0 +1,37 @@
+.start {
+
+}
+
+.instruct {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.txt {
+
+}
+
+.levels {
+    padding: var(--size-padding-base);
+    border: var(--border-legend);
+    font-size: var(--size-font-small);
+    width: max-content;
+}
+
+.levels legend {
+    color: var(--color-legend);
+    font-style: italic;
+}
+
+.levelsEasy {
+    color: var(--color-base);
+}
+
+.levelsMiddle {
+    color: var(--color-middle);
+}
+
+.levelsHard {
+    color: var(--color-hard);
+}

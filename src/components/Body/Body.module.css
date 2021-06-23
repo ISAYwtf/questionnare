@@ -1,3 +1,9 @@
 .body {
     padding: var(--size-padding-base);
 }
+
+span {
+    color: var(--color-base);
+}
+
+
