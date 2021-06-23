@@ -1,0 +1,7 @@
+.header {
+    background: var(--color-base);
+    padding: var(--size-padding-base);
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+}
