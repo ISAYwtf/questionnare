@@ -1,0 +1,39 @@
+.container {
+
+}
+
+.result {
+    display: flex;
+    align-items: baseline;
+    font-size: 1.5rem;
+}
+
+.result p:last-child {
+    font-style: italic;
+}
+
+.score {
+    margin-left: 50px;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.details {
+    font-style: italic;
+}
+
+.levels {
+    margin-bottom: 40px;
+}
+
+.levelsEasy {
+    color: var(--color-base);
+}
+
+.levelsMiddle {
+    color: var(--color-middle);
+}
+
+.levelsHard {
+    color: var(--color-hard);
+}

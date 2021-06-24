@@ -1,0 +1,63 @@
+.wrap {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: max-content;
+}
+
+.txt {
+    text-align: center;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: sans-serif;
+}
+
+.preloader {
+    position: relative;
+    width: 150px;
+    height: 20px;
+    background: #36aaff;
+    overflow: hidden;
+}
+
+.glare {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -25px;
+    top: 0;
+    background: white;
+    opacity: 0.5;
+    transform: skew(-25deg);
+
+    animation-name: preloader;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+}
+
+.glare:last-child {
+    animation-delay: 1.5s;
+}
+
+@keyframes preloader {
+    from {
+        left: -25px;
+    }
+
+    to {
+        left: 180px;
+    }
+}
