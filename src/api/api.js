@@ -1,12 +1,12 @@
 import * as axios from "axios"
 
-const server = axios.create({
-    baseURL: "https://opentdb.com/api.php?"
-})
+const server = axios.create()
 
 const API = {
     getQuestions(size = 10) {
-        return server.get(`amount=${size}`).then(response => console.log("response:", response))
+        // console.log("API: Continuing")
+        return server.get(`https://opentdb.com/api.php?amount=${size}&encode=base64`)
+            .then(response => response.data)
     }
 }
 

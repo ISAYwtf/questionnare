@@ -4,23 +4,31 @@ import Body from "./components/Body"
 import Header from "./components/Header"
 import './App.css'
 import {
+    getAppCurrentPage,
     getAppCurrentQuestion,
     getAppIsFetching,
     getAppLevels,
     getAppQuestions, getAppQuestionSize,
-    getAppScore, getAppTargetPage
+    getAppScore
 } from "./redux/app-reducer/app-selectors";
-import {setTargetPage, toggleIsFetching} from "./redux/app-reducer/app-reducer";
-import Preloader from "./components/common/Preloader";
+import {
+    clearResult, fixAnswer,
+    getQuestions, setCurrentAnswer,
+    setCurrentPage,
+    setCurrentQuestion,
+    toggleIsFetching
+} from "./redux/app-reducer/app-reducer";
+// import Preloader from "./components/common/Preloader";
 import Footer from "./components/Footer"
 
-const App = props =>
-    <div className="App">
-        {props.isFetching ? <Preloader /> : ""}
+const App = props => {
+
+    return <div className="App">
         <Header/>
         <Body {...props}/>
-        {props.targetPage === "start" ? "" : <Footer {...props} />}
-    </div>
+        {props.currentPage === "start" ? "" : <Footer {...props} />}
+    </div>;
+}
 
 const mapStateToProps = state => ({
     isFetching: getAppIsFetching(state),
@@ -29,16 +37,24 @@ const mapStateToProps = state => ({
     currentQuestion: getAppCurrentQuestion(state),
     questions: getAppQuestions(state),
     questionSize: getAppQuestionSize(state),
-    targetPage: getAppTargetPage(state)
+    currentPage: getAppCurrentPage(state)
 })
 
-const mapDispatchToProps = {toggleIsFetching, setTargetPage}
+const mapDispatchToProps = {
+    toggleIsFetching,
+    setCurrentPage,
+    getQuestions,
+    setCurrentQuestion,
+    setCurrentAnswer,
+    fixAnswer,
+    clearResult
+}
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)
 
 const Questionnaire = props =>
     <Provider store={store}>
-        <AppContainer />
+        <AppContainer/>
     </Provider>
 
 export default Questionnaire

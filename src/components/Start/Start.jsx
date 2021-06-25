@@ -14,7 +14,7 @@ const Start = props => {
             <fieldset className={styles.levels}>
                 <legend>Уровни сложности</legend>
                 <p className={styles.levelsEasy}>Легкий - {props.levels.easy} балла</p>
-                <p className={styles.levelsMiddle}>Средний - {props.levels.middle} балл</p>
+                <p className={styles.levelsMiddle}>Средний - {props.levels.medium} балл</p>
                 <p className={styles.levelsHard}>Сложный - {props.levels.hard} балла</p>
             </fieldset>
         </div>

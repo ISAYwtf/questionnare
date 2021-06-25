@@ -4,10 +4,12 @@ import Start from "../Start";
 import Question from "../Question";
 import Result from "../Result";
 import Button from "../common/Button";
+// import Preloader from "../common/Preloader";
 
 const Body = props => {
-    const showPage = (targetPage = "start") => {
-        switch (targetPage) {
+
+    const showPage = (currentPage = "start") => {
+        switch (currentPage) {
             case "start":
                 return <Start {...props} />
             case "process":
@@ -20,8 +22,13 @@ const Body = props => {
     }
 
     return <main className={styles.body}>
-        {showPage(props.targetPage)}
-        <Button targetPage={props.targetPage} setTargetPage={props.setTargetPage}/>
+
+        {/*<Preloader flag={props.isFetching} />*/}
+        {showPage(props.currentPage)}
+        <div className={styles.button}>
+            {props.currentPage === "process" ? <Button nextPage={"start"} {...props}/> : ""}
+            <Button {...props} />
+        </div>
     </main>;
 }
 

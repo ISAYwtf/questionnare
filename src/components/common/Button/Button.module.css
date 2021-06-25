@@ -1,10 +1,4 @@
-.button {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 50px;
-}
-
-.button button {
+button {
     background: none;
     border: none;
     display: flex;
@@ -13,14 +7,14 @@
     cursor: pointer;
 }
 
-.titleBase {
+.title {
     color: black;
     font-size: 1.5rem;
     margin-right: 30px;
     font-weight: 700;
 }
 
-.titleProcess {
+button[data-page="process"] span {
     font-size: 1rem;
 }
 
@@ -44,11 +38,11 @@
     transition: transform 1s;
 }
 
-.button button:hover .btnArrow {
+button:hover .btnArrow {
     animation-name: arrow-move;
 }
 
-.button button:hover .btnReturn {
+button:hover .btnReturn {
     transform: rotate(-360deg);
 }
 

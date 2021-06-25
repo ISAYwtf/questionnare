@@ -1,23 +1,35 @@
 import React from "react"
 import styles from "./Result.module.css"
+import {encodeString} from "../../utils/encoder";
 
 const Result = props => {
-    const detailScore = props.score.easy + props.score.middle + props.score.hard
+    const {score, questions, questionSize, levels} = props
+
+    const detailScore = score.easy + score.medium + score.hard
+
+    const getLevelSize = level => questions.filter(el => encodeString(el.level) === level).length
+    const easyQuestionSize = getLevelSize("easy")
+    const mediumQuestionSize = getLevelSize("medium")
+    const hardQuestionSize = getLevelSize("hard")
+
+    const maxScore = (easyQuestionSize * levels.easy) + (mediumQuestionSize * levels.medium) + (hardQuestionSize * levels.hard)
+
+    const mainScore = ((score.easy * levels.easy) + (score.medium * levels.medium) + (score.hard * levels.hard)) * 100 / maxScore
 
     return (
         <div className={styles.container}>
             <div className={styles.result}>
                 <p>Результат:</p>
-                <p><span className={styles.score}>{props.score.main}</span> / 10</p>
+                <p><span className={styles.score}>{mainScore} %</span></p>
             </div>
             <div className={styles.details}>
                 <div className={styles.levels}>
-                    <p className={styles.levelsEasy}>Легкий - {props.score.easy} / 4</p>
-                    <p className={styles.levelsMiddle}>Средний - {props.score.middle} / 4</p>
-                    <p className={styles.levelsHard}>Тяжелый - {props.score.hard} / 2</p>
+                    <p className={styles.levelsEasy}>Легкий - {score.easy} / {easyQuestionSize}</p>
+                    <p className={styles.levelsMiddle}>Средний - {score.medium} / {mediumQuestionSize}</p>
+                    <p className={styles.levelsHard}>Тяжелый - {score.hard} / {hardQuestionSize}</p>
                 </div>
                 <div className={styles.detailResult}>
-                    <p>Всего правильных ответов: <span>{detailScore}</span> / 10</p>
+                    <p>Всего правильных ответов: <span>{detailScore}</span> / {questionSize}</p>
                 </div>
             </div>
         </div>

@@ -19,7 +19,11 @@ code {
   --color-middle: #FFBB36;
   --color-hard: #FF3636;
   --color-legend: rgba(54, 170, 255, 0.5);
+  --color-legend-middle: rgba(255, 187, 54, 0.5);
+  --color-legend-hard: rgba(255, 54, 54, 0.5);
   --border-legend: 1px solid rgba(54, 170, 255, 0.5);
+  --border-legend-middle: 1px solid rgba(255, 187, 54, 0.5);
+  --border-legend-hard: 1px solid rgba(255, 54, 54, 0.5);
 }
 
 * {

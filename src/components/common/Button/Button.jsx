@@ -3,32 +3,60 @@ import arrow from "../../../assets/img/arrow.svg"
 import again from "../../../assets/img/return.svg"
 import styles from "./Button.module.css"
 
-const Button = ({targetPage, setTargetPage}) => {
+const Button = props => {
+    const {
+        currentPage,
+        setCurrentPage,
+        getQuestions,
+        questionsSize,
+        currentQuestion,
+        setCurrentQuestion,
+        fixAnswer,
+        clearResult
+    } = props
+
     let title = "Начать новый опрос"
     let img = arrow
     let imgClassName = styles.btnArrow
-    let spanTitle = styles.titleBase
-    let nextPage = "process"
+    let nextPage = props.nextPage ? props.nextPage : "finish"
 
-    if (targetPage === "start") {
+    if (currentPage === "start") {
         title = "Начать опрос"
-    } else if (targetPage === "process") {
-        title = "Следующий вопрос"
-        spanTitle += ` ${styles.titleProcess}`
-    } else if (targetPage === "finish") {
+        nextPage = "process"
+    } else if (currentPage === "process") {
+        if (nextPage === "start") {
+            title = "Начать новый опрос"
+            img = again
+            imgClassName = styles.btnReturn
+        } else {
+            title = "Следующий вопрос"
+        }
+    } else if (currentPage === "finish") {
         img = again
         imgClassName = styles.btnReturn
         nextPage = "start"
     }
 
-    const changePage = () => setTargetPage(nextPage)
+    const changePage = () => {
+        if (nextPage === "process" && currentPage === "start") {
+            getQuestions(questionsSize)
+        } else if (currentPage === "process" && nextPage !== "start" && currentQuestion < 9) {
+            fixAnswer()
+            setCurrentQuestion(currentQuestion + 1)
+            return
+        } else if (nextPage === "start") {
+            clearResult()
+        }
 
-    return <div className={styles.button}>
-        <button onClick={changePage}>
-            <span className={spanTitle}>{title}</span>
-            <img src={img} className={`${styles.btnSvg} ${imgClassName}`}></img>
-        </button>
-    </div>
+        setCurrentQuestion(0)
+
+        return setCurrentPage(nextPage);
+    }
+
+    return <button onClick={changePage} data-page={currentPage}>
+        <span className={styles.title}>{title}</span>
+        <img src={img} className={`${styles.btnSvg} ${imgClassName}`}></img>
+    </button>
 }
 
 export default Button

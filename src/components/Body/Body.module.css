@@ -6,4 +6,8 @@ span {
     color: var(--color-base);
 }
 
-
+.button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
