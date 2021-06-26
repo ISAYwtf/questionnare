@@ -1,6 +1,8 @@
 import React from "react"
 import styles from "./Result.module.css"
 import {encodeString} from "../../utils/encoder";
+import {getAppLevels, getAppQuestions, getAppQuestionSize, getAppScore} from "../../redux/app-reducer/app-selectors";
+import {connect} from "react-redux";
 
 const Result = props => {
     const {score, questions, questionSize, levels} = props
@@ -36,4 +38,13 @@ const Result = props => {
     )
 }
 
-export default Result
+const mapStateToProps = state => ({
+    score: getAppScore(state),
+    questions: getAppQuestions(state),
+    questionSize: getAppQuestionSize(state),
+    levels: getAppLevels(state)
+})
+
+const ResultContainer = connect(mapStateToProps)(Result)
+
+export default ResultContainer

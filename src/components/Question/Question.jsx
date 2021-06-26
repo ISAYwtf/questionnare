@@ -2,6 +2,9 @@ import React from "react"
 import styles from "./Question.module.css"
 import Preloader from "../common/Preloader";
 import {encodeString} from "../../utils/encoder";
+import {getAppCurrentQuestion, getAppIsFetching, getAppQuestions} from "../../redux/app-reducer/app-selectors";
+import {connect} from "react-redux";
+import {setCurrentAnswer} from "../../redux/app-reducer/app-reducer";
 
 const AnswerItem = props => {
     let answer = props.answer
@@ -34,14 +37,12 @@ const AnswerItem = props => {
 const Question = props => {
     const {isFetching, currentQuestion, questions, setCurrentAnswer} = props
 
-    // const levelOfQuestion = encodeString(props.questions[currentQuestion].level)
-    const question = encodeString(props.questions[currentQuestion].question)
-    const category = encodeString(props.questions[currentQuestion].category)
-    const type = encodeString(props.questions[currentQuestion].type)
+    const question = encodeString(questions[currentQuestion].question)
+    const category = encodeString(questions[currentQuestion].category)
+    const type = encodeString(questions[currentQuestion].type)
     const answers = questions[currentQuestion].answers
         .map(el => encodeString(el))
     const level = encodeString(questions[currentQuestion].level)
-    // const correctAnswer = encodeString(questions[currentQuestion].correctAnswer)
 
     const answerElements = answers
         .map((el, i) => {
@@ -69,4 +70,16 @@ const Question = props => {
     </div>;
 }
 
-export default Question
+const mapStateToProps = state => ({
+    isFetching: getAppIsFetching(state),
+    currentQuestion: getAppCurrentQuestion(state),
+    questions: getAppQuestions(state)
+})
+
+const mapDispatchToProps = {
+    setCurrentAnswer
+}
+
+const QuestionContainer = connect(mapStateToProps, mapDispatchToProps)(Question)
+
+export default QuestionContainer

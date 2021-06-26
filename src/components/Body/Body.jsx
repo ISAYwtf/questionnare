@@ -1,35 +1,31 @@
 import React from "react"
 import styles from "./Body.module.css"
-import Start from "../Start";
-import Question from "../Question";
-import Result from "../Result";
-import Button from "../common/Button";
-// import Preloader from "../common/Preloader";
+import StartContainer from "../Start"
+import ResultContainer from "../Result"
+import ButtonContainer from "../common/Button"
+import QuestionContainer from "../Question"
 
-const Body = props => {
-
+const Body = ({currentPage}) => {
     const showPage = (currentPage = "start") => {
         switch (currentPage) {
             case "start":
-                return <Start {...props} />
+                return <StartContainer/>
             case "process":
-                return <Question {...props} />
+                return <QuestionContainer/>
             case "finish":
-                return <Result {...props}/>
+                return <ResultContainer/>
             default:
-                return <Start {...props}/>
+                return <StartContainer/>
         }
     }
 
     return <main className={styles.body}>
-
-        {/*<Preloader flag={props.isFetching} />*/}
-        {showPage(props.currentPage)}
+        {showPage(currentPage)}
         <div className={styles.button}>
-            {props.currentPage === "process" ? <Button nextPage={"start"} {...props}/> : ""}
-            <Button {...props} />
+            {currentPage === "process" ? <ButtonContainer nextPage={"start"}/> : ""}
+            <ButtonContainer/>
         </div>
-    </main>;
+    </main>
 }
 
 export default Body

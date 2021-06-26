@@ -2,6 +2,15 @@ import React from "react"
 import arrow from "../../../assets/img/arrow.svg"
 import again from "../../../assets/img/return.svg"
 import styles from "./Button.module.css"
+import {connect} from "react-redux";
+import {getAppCurrentPage, getAppCurrentQuestion, getAppQuestionSize} from "../../../redux/app-reducer/app-selectors";
+import {
+    clearResult,
+    fixAnswer,
+    getQuestions,
+    setCurrentPage,
+    setCurrentQuestion
+} from "../../../redux/app-reducer/app-reducer";
 
 const Button = props => {
     const {
@@ -59,4 +68,17 @@ const Button = props => {
     </button>
 }
 
-export default Button
+const mapStateToProps = state => ({
+    currentPage: getAppCurrentPage(state),
+    questionsSize: getAppQuestionSize(state),
+    currentQuestion: getAppCurrentQuestion(state),
+})
+
+const mapDispatchToProps = {
+    setCurrentPage, getQuestions,
+    setCurrentQuestion, fixAnswer, clearResult
+}
+
+const ButtonContainer = connect(mapStateToProps, mapDispatchToProps)(Button)
+
+export default ButtonContainer
