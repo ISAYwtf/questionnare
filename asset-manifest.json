@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/questionnare/static/css/main.e7d1cabb.chunk.css",
-    "main.js": "/questionnare/static/js/main.06fc4f22.chunk.js",
-    "main.js.map": "/questionnare/static/js/main.06fc4f22.chunk.js.map",
+    "main.js": "/questionnare/static/js/main.a77fd4f5.chunk.js",
+    "main.js.map": "/questionnare/static/js/main.a77fd4f5.chunk.js.map",
     "runtime-main.js": "/questionnare/static/js/runtime-main.23e1335b.js",
     "runtime-main.js.map": "/questionnare/static/js/runtime-main.23e1335b.js.map",
     "static/js/2.fdd20317.chunk.js": "/questionnare/static/js/2.fdd20317.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.23e1335b.js",
     "static/js/2.fdd20317.chunk.js",
     "static/css/main.e7d1cabb.chunk.css",
-    "static/js/main.06fc4f22.chunk.js"
+    "static/js/main.a77fd4f5.chunk.js"
   ]
 }
